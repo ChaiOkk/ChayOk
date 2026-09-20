@@ -180,6 +180,60 @@
                 transform: scale(1) translateY(0);
             }
         }
+         @media (max-width: 768px) {
+            header {
+                padding: 20px 5%; /* Уменьшаем отступы в шапке */
+            }
+
+            .logo {
+                font-size: 22px; /* Чуть меньше логотип */
+            }
+
+            .phone-link {
+                font-size: 10px !important; /* Уменьшаем кнопки мессенджеров */
+                padding: 6px 12px !important;
+            }
+
+            .hero-wrapper {
+                padding: 0 20px; /* Отступы по бокам на телефоне */
+            }
+
+            .hero-content {
+                margin-top: 0; /* Убираем сильный сдвиг вверх, чтобы не залезть на шапку */
+                max-width: 100%;
+            }
+
+            .tag {
+                font-size: 11px; /* Аккуратный тег */
+                letter-spacing: 3px;
+                margin-bottom: 15px;
+            }
+
+            .title {
+                font-size: 42px; /* Идеальный брутальный размер для экрана телефона */
+                line-height: 1.1;
+                margin-bottom: 20px;
+            }
+
+            .desc {
+                font-size: 15px; /* Читабельный текст на мобилке */
+                line-height: 1.5;
+                margin-bottom: 35px;
+                max-width: 100%;
+            }
+
+            .btn-brutal {
+                width: 100%; /* Кнопка на всю ширину экрана смартфона — так удобнее нажимать пальцем */
+                padding: 18px 0;
+                text-align: center;
+                font-size: 13px;
+                clip-path: polygon(2% 0, 98% 0, 100% 100%, 0 100%); /* Корректируем скос под мобильную ширину */
+            }
+            
+            .leaf {
+                display: none; /* Отключаем летящие листья на мобилках, чтобы сайт не лагал на слабых телефонах */
+            }
+        }
     </style>
 </head>
 <body>
