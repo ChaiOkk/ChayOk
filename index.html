@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЧайОК — Чай, который меняет состояние</title>
+    
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --gold: #A68A56; /* Матовое приглушенное золото */
+            --gold-light: #C5A059;
+            --text-main: #D6D6D6; /* Мягкий белый */
+            --text-muted: #555555;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+        }
+
+        p, a, span {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* ЦЕНТРИРОВАННЫЙ БРУТАЛЬНЫЙ ФОН */
+        .hero-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Центрируем по горизонтали */
+            padding: 0 20px;
+            background: 
+                linear-gradient(135deg, #070707 0%, #0d0d0d 100%),
+                radial-gradient(circle at 50% 50%, rgba(166, 138, 86, 0.08) 0%, transparent 60%),
+                repeating-linear-gradient(45deg, rgba(20,20,20,0.05) 0px, rgba(20,20,20,0.05) 2px, transparent 2px, transparent 8px);
+            background-blend-mode: overlay;
+            overflow: hidden;
+        }
+
+        /* МЯГКИЕ ТЕМНЫЕ ЧАСТИЦЫ НА ФОНЕ */
+        .leaf {
+            position: absolute;
+            background: rgba(166, 138, 86, 0.03);
+            clip-path: polygon(50% 0%, 100% 35%, 80% 80%, 50% 100%, 20% 80%, 0% 35%);
+            animation: floatLeaves 22s infinite linear;
+            pointer-events: none;
+        }
+
+        .leaf-1 { width: 50px; height: 80px; top: 20%; left: 20%; animation-duration: 20s; }
+        .leaf-2 { width: 35px; height: 60px; top: 60%; left: 75%; animation-duration: 28s; }
+        .leaf-3 { width: 70px; height: 110px; top: 40%; left: 45%; animation-duration: 35s; filter: blur(2px); }
+
+        @keyframes floatLeaves {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.9); }
+            100% { transform: translateY(-120px) rotate(360deg) scale(1.1); }
+        }
+
+        /* ШАПКА */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 35px 10%;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .phone-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 10px 22px;
+            transition: all 0.3s;
+        }
+
+        .phone-link:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* ПОЛНОСТЬЮ ЦЕНТРИРОВАННЫЙ КОНТЕНТ */
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            max-width: 800px;
+            text-align: center; /* Текст строго по центру */
+            margin-top: -60px; /* Сохраняем легкую приподнятость выше геометрического центра */
+            animation: cubicFadeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .tag {
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        .title {
+            font-size: 76px; /* Жирный, брутальный, монолитный по центру */
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: #FFF;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .desc {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 45px;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto; /* Центрируем параграф */
+        }
+
+        /* СИММЕТРИЧНАЯ СКОШЕННАЯ КНОПКА ПО ЦЕНТРУ */
+        .btn-brutal {
+            display: inline-block;
+            padding: 20px 60px;
+            color: #0a0a0a;
+            background-color: var(--gold);
+            text-decoration: none;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: none;
+            clip-path: polygon(4% 0, 96% 0, 100% 100%, 0 100%); /* Симметричный скос для центрального положения */
+        }
+
+        .btn-brutal:hover {
+            background-color: var(--gold-light);
+            transform: scale(1.03);
+        }
+
+        /* Плавное проявление на месте с масштабированием */
+        @keyframes cubicFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+     <header>
+        <div class="logo">Чай<span>ОК</span></div>
+        <div style="display: flex; gap: 15px;">
+            <a href="#" class="phone-link" onclick="return false;">СВЯЗАТЬСЯ В WHATSAPP</a>
+            <a href="#" class="phone-link" onclick="return false;">  СВЯЗАТЬСЯ В TELEGRAM</a>
+            <a href="#" class="phone-link" onclick="return false;">СВЯЗАТЬСЯ В MAX</a>
+        </div>
+    </header>
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <main class="hero-wrapper">
+        <!-- Лепестки -->
+        <div class="leaf leaf-1"></div>
+        <div class="leaf leaf-2"></div>
+        <div class="leaf leaf-3"></div>
+
+        <!-- Центрированный контент -->
+        <div class="hero-content">
+            <span class="tag">// Абсолютная крепость</span>
+            <h1 class="title">Чай, который<br>меняет состояние</h1>
+            <p class="desc">Дикие китайские сорта direct-trade. Плотные выдержанные пуэры и мощные утесные улуны. Почувствуй характер с первой пиалы.</p>
+            <a href="https://t.me" class="btn-brutal">Открыть меню</a>
+        </div>
+    </main>
+
+</body>
+</html>
