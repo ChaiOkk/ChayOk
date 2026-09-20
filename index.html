@@ -180,59 +180,57 @@
                 transform: scale(1) translateY(0);
             }
         }
-         @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
+            /* Уменьшаем отступы в шапке, чтобы кнопки не налезали на логотип */
             header {
-                padding: 20px 5%; /* Уменьшаем отступы в шапке */
+                padding: 20px 5%;
             }
 
             .logo {
-                font-size: 22px; /* Чуть меньше логотип */
+                font-size: 22px;
+                letter-spacing: 1px;
             }
 
+            /* Делаем кнопки в шапке еще компактнее */
             .phone-link {
-                font-size: 10px !important; /* Уменьшаем кнопки мессенджеров */
+                font-size: 9px !important;
                 padding: 6px 12px !important;
+                letter-spacing: 1px;
             }
 
-            .hero-wrapper {
-                padding: 0 20px; /* Отступы по бокам на телефоне */
-            }
-
+            /* Сдвигаем контент чуть ниже, учитывая высоту шапки на мобильных */
             .hero-content {
-                margin-top: 0; /* Убираем сильный сдвиг вверх, чтобы не залезть на шапку */
-                max-width: 100%;
+                margin-top: 20px; 
+                padding: 0 10px;
             }
 
-            .tag {
-                font-size: 11px; /* Аккуратный тег */
-                letter-spacing: 3px;
-                margin-bottom: 15px;
-            }
-
+            /* Уменьшаем гигантский заголовок, чтобы он не переносился по одной букве */
             .title {
-                font-size: 42px; /* Идеальный брутальный размер для экрана телефона */
+                font-size: 42px; 
                 line-height: 1.1;
                 margin-bottom: 20px;
             }
 
+            /* Оптимизируем размер описания */
             .desc {
-                font-size: 15px; /* Читабельный текст на мобилке */
+                font-size: 15px;
                 line-height: 1.5;
                 margin-bottom: 35px;
-                max-width: 100%;
+                color: #a0a0a0; /* Делаем чуть светлее для лучшей читаемости на ходу */
             }
 
+            /* Кнопка "Открыть меню" на весь экран для удобного тапа пальцем */
             .btn-brutal {
-                width: 100%; /* Кнопка на всю ширину экрана смартфона — так удобнее нажимать пальцем */
+                width: 100%;
+                max-width: 280px;
                 padding: 18px 0;
-                text-align: center;
                 font-size: 13px;
-                clip-path: polygon(2% 0, 98% 0, 100% 100%, 0 100%); /* Корректируем скос под мобильную ширину */
+                text-align: center;
             }
             
-            .leaf {
-                display: none; /* Отключаем летящие листья на мобилках, чтобы сайт не лагал на слабых телефонах */
-            }
+            /* Делаем летящие лепестки чуть меньше, чтобы они не отвлекали */
+            .leaf-1 { width: 35px; height: 55px; }
+            .leaf-3 { width: 45px; height: 75px; }
         }
     </style>
 </head>
